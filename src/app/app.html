@@ -1,9 +1,8 @@
 <div class="main-container">
-
   <form class="wish-form">
     <div class="input-wish">
       <label>
-        <input type="text" name="new-wish-text" [(ngModel)]="newWishText">
+        <input type="text" name="new-wish-text" [(ngModel)]="newWishText" />
       </label>
     </div>
     <div>
@@ -11,7 +10,15 @@
     </div>
   </form>
 
-  @if (wishes.length == 0) {
+  <div class="filter-container">
+    <select class="filter-select" [(ngModel)]="selectedFilter">
+      @for (filter of filters; track $index) {
+      <option [value]="filter">{{ filter }}</option>
+      }
+    </select>
+  </div>
+
+  @if (visibleWishes.length == 0) {
   <div class="no-wishes-container">There are no whises to display.</div>
   } @else {
   <ng-template [ngTemplateOutlet]="showItems" />
@@ -19,15 +26,16 @@
 
   <ng-template #showItems>
     <ul class="wish-list">
-      @for (wish of wishes; track $index) {
+      @for (wish of visibleWishes; track $index) {
       <li class="wish-item">
         <div>
           <label>
-            <input 
-            type="checkbox"
-            [checked]="wish.isComplete"
-            [attr.data-index]="$index"
-            (click)="toggleWish(wish)"/>
+            <input
+              type="checkbox"
+              [checked]="wish.isComplete"
+              [attr.data-index]="$index"
+              (click)="toggleWish(wish)"
+            />
             {{ wish.content }}
           </label>
         </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WishItem } from './shared/models/WishItem';
 import { NgTemplateOutlet } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { WishFilter } from './shared/enums/WishFilter';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,21 @@ export class App {
 
   newWishText = '';
 
+  selectedFilter = WishFilter.ALL;
+  filters = Object.values(WishFilter);
+
+  public get visibleWishes(): WishItem[] {
+    if (this.selectedFilter == WishFilter.FULFILLED) {
+      return this.wishes.filter((wish) => wish.isComplete);
+    }
+    if (this.selectedFilter == WishFilter.UNFULFILLED) {
+      return this.wishes.filter((wish) => !wish.isComplete);
+    }
+    return this.wishes;
+  }
+
   toggleWish(wish: WishItem) {
     wish.isComplete = !wish.isComplete;
-    console.log(wish);
   }
 
   addNewWish() {
