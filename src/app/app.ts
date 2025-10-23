@@ -17,9 +17,5 @@ export class App {
     new WishItem('Learn DevOps'),
   ];
 
-  filter: any = () => {};
-
-  public get visibleWishes(): WishItem[] {
-    return this.wishes.filter(this.filter);
-  }
+  filter: any;
 }
