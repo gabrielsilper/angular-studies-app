@@ -1,0 +1,7 @@
+<div class="filter-container">
+    <select class="filter-select" [(ngModel)]="selectedFilter" (ngModelChange)="changeFilter()">
+      @for (filter of filters; track $index) {
+      <option [value]="filter">{{ filter }}</option>
+      }
+    </select>
+  </div>

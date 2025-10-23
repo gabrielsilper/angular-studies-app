@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 import { WishItem } from './shared/models/WishItem';
-import { NgTemplateOutlet } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { WishFilter } from './shared/enums/WishFilter';
 import { WishList } from './wish-list/wish-list';
-import { AddWishForm } from "./add-wish-form/add-wish-form";
+import { AddWishForm } from './add-wish-form/add-wish-form';
+import { WishSelectorFilter } from './wish-selector-filter/wish-selector-filter';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [FormsModule, WishList, AddWishForm],
+  imports: [WishList, AddWishForm, WishSelectorFilter],
 })
 export class App {
   wishes: WishItem[] = [
@@ -18,17 +16,10 @@ export class App {
     new WishItem('Learn Java', true),
     new WishItem('Learn DevOps'),
   ];
-  
-  selectedFilter = WishFilter.ALL;
-  filters = Object.values(WishFilter);
-  
+
+  filter: any = () => {};
+
   public get visibleWishes(): WishItem[] {
-    if (this.selectedFilter == WishFilter.FULFILLED) {
-      return this.wishes.filter((wish) => wish.isComplete);
-    }
-    if (this.selectedFilter == WishFilter.UNFULFILLED) {
-      return this.wishes.filter((wish) => !wish.isComplete);
-    }
-    return this.wishes;
+    return this.wishes.filter(this.filter);
   }
 }

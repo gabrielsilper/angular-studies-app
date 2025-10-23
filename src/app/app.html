@@ -1,13 +1,7 @@
 <div class="main-container">
   <add-wish-form (addWish)="wishes.push($event)"></add-wish-form>
 
-  <div class="filter-container">
-    <select class="filter-select" [(ngModel)]="selectedFilter">
-      @for (filter of filters; track $index) {
-      <option [value]="filter">{{ filter }}</option>
-      }
-    </select>
-  </div>
+  <wish-selector-filter (filter)="filter = $event"></wish-selector-filter>
 
   <wish-list [wishes]="visibleWishes"></wish-list>
 </div>
