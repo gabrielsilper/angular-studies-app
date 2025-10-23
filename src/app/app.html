@@ -18,29 +18,5 @@
     </select>
   </div>
 
-  @if (visibleWishes.length == 0) {
-  <div class="no-wishes-container">There are no whises to display.</div>
-  } @else {
-  <ng-template [ngTemplateOutlet]="showItems" />
-  }
-
-  <ng-template #showItems>
-    <ul class="wish-list">
-      @for (wish of visibleWishes; track $index) {
-      <li class="wish-item">
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              [checked]="wish.isComplete"
-              [attr.data-index]="$index"
-              (click)="toggleWish(wish)"
-            />
-            {{ wish.content }}
-          </label>
-        </div>
-      </li>
-      }
-    </ul>
-  </ng-template>
+  <wish-list [wishes]="visibleWishes"></wish-list>
 </div>
