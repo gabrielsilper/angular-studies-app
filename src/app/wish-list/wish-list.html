@@ -7,19 +7,10 @@
 <ng-template #showItems>
   <ul class="wish-list">
     @for (wish of wishes; track $index) {
-    <li class="wish-item">
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            [checked]="wish.isComplete"
-            [attr.data-index]="$index"
-            (click)="toggleWish(wish)"
-          />
-          {{ wish.content }}
-        </label>
-      </div>
-    </li>
+      <wish-list-item
+      [content] = "wish.content"
+      [(fulfilled)] = "wish.isComplete"
+      ></wish-list-item>
     }
   </ul>
 </ng-template>
