@@ -3,6 +3,8 @@ import { WishItem } from './shared/models/WishItem';
 import { WishList } from './wish-list/wish-list';
 import { AddWishForm } from './add-wish-form/add-wish-form';
 import { WishSelectorFilter } from './wish-selector-filter/wish-selector-filter';
+import { WishEventService } from './shared/services/WishEventService';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,12 @@ export class App {
     new WishItem('Learn Java', true),
     new WishItem('Learn DevOps'),
   ];
+
+  constructor(private wishEvent: WishEventService) {
+    wishEvent.listen('remove-wish', (wishOfEvent) => {
+      this.wishes = this.wishes.filter((wish) => wish !== wishOfEvent);
+    });
+  }
 
   filter: any;
 }

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { WishItem } from '../shared/models/WishItem';
+import { WishEventService } from '../shared/services/WishEventService';
 
 @Component({
   selector: 'wish-list-item',
@@ -7,17 +9,23 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './wish-list-item.css',
 })
 export class WishListItem {
-  @Input() content!: string;
+  @Input() wish!: WishItem;
 
-  @Input() fulfilled!: boolean;
-  @Output() fulfilledChange = new EventEmitter<boolean>();
+  constructor(private wishEvent: WishEventService) {}
 
   toggleStatus() {
-    this.fulfilled = !this.fulfilled;
-    return this.fulfilledChange.emit(this.fulfilled);
+    this.wish.isComplete = !this.wish.isComplete;
+  }
+
+  removeWish() {
+    debugger;
+    this.wishEvent.publish({
+      eventName: 'remove-wish',
+      payload: this.wish,
+    });
   }
 
   get wishItemCss() {
-    return this.fulfilled ? ['completed'] : [];
+    return this.wish.isComplete ? ['completed'] : [];
   }
 }

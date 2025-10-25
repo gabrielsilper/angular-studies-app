@@ -7,10 +7,7 @@
 <ng-template #showItems>
   <ul class="wish-list">
     @for (wish of wishes; track $index) {
-      <wish-list-item
-      [content] = "wish.content"
-      [(fulfilled)] = "wish.isComplete"
-      ></wish-list-item>
+    <wish-list-item [wish]="wish"></wish-list-item>
     }
   </ul>
 </ng-template>

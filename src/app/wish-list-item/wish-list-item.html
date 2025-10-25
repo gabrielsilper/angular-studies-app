@@ -1,8 +1,9 @@
 <li class="wish-item">
   <div>
     <label [className]="wishItemCss">
-      <input type="checkbox" [checked]="fulfilled" (click)="toggleStatus()" />
-      {{ content }}
+      <input type="checkbox" [checked]="wish.isComplete" (click)="toggleStatus()" />
+      {{ wish.content }}
     </label>
   </div>
+  <button type="button" (click)="removeWish()">Remove</button>
 </li>
