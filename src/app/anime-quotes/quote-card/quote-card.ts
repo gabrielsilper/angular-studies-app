@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-quote-card',
+  selector: 'quote-card',
   imports: [],
   templateUrl: './quote-card.html',
   styleUrl: './quote-card.css'

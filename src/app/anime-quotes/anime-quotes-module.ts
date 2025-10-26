@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { QuoteCard } from './quote-card/quote-card';
+import { AnimeQuotes } from './anime-quotes';
 
 @NgModule({
   declarations: [],
-  imports: [QuoteCard],
-  exports: [QuoteCard],
+  imports: [AnimeQuotes],
+  exports: [AnimeQuotes],
 })
 export class AnimeQuotesModule {}
