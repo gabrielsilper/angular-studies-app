@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { WishFilter } from '../shared/enums/WishFilter';
+import { WishFilter } from '../../shared/enums/WishFilter';
 import { FormsModule } from '@angular/forms';
-import { WishItem } from '../shared/models/WishItem';
+import { WishItem } from '../../shared/models/WishItem';
 
 const filterCallbacks = {
   All: (wish: WishItem) => wish,
