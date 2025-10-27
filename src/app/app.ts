@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { WishModule } from './wish/wish-module';
-import { AnimeQuotesModule } from './anime-quotes/anime-quotes-module';
+import { MovieModule } from './movie/movie-module';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [WishModule, AnimeQuotesModule],
+  imports: [WishModule,MovieModule],
 })
 export class App {}

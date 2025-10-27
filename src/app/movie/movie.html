@@ -1,0 +1,7 @@
+<div class="movie-main-container">
+  @if (isLoading) {
+  <div>Loadind movies data...</div>
+  } @else { @for (description of descriptions; track $index) {
+  <p>{{ description.title }}</p>
+  } }
+</div>
