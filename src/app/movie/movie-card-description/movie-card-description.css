@@ -1,11 +1,17 @@
 .movie-card-container {
-    border: 2px blue solid;
-    width: 60em;
-    padding: 20px;
-    display: flex;
-    height: 400px;
+  width: 30em;
+  max-height: 250px;
+  padding: 10px;
+  display: flex;
+  gap: 20px;
 }
 
 .poster-infos {
-    border: 2px lightgreen solid;
+  height: 200px;
+  color: #c0bbbb;
+}
+
+.poster-infos span {
+  color: #ebe9e9;
+  font-weight: 900;
 }

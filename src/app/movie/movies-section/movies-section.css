@@ -2,6 +2,6 @@
     border: 2px red solid;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1px;
     align-items: center;
 }
