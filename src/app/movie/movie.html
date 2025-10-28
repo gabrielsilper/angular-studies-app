@@ -1,12 +1,7 @@
 <div class="movie-main-container">
-  <form>
-    <input type="text" name="search-text" [(ngModel)]="searchText" />
-    <button type="submit" (click)="$event.preventDefault(); searchMovie()">Search</button>
-  </form>
-
   @if (isLoading) {
-  <div>Loadind movies data...</div>
-  } @else { @for (description of descriptions; track $index) {
-  <p>{{ description.title }}</p>
-  } }
+  <loading></loading>
+  } @else { 
+    <movies-section [movieDescriptions]="descriptions"></movies-section>
+  }
 </div>
