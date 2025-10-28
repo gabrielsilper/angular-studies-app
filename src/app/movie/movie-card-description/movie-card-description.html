@@ -1,0 +1,21 @@
+<div class="movie-card-container">
+  <div class="poster-container">
+    <img
+      class="poster-img"
+      [ngSrc]="movieDescription.imgPoster"
+      width="250"
+      height="400"
+      [alt]="'poster from ' + movieDescription.title"
+    />
+  </div>
+  <div class="poster-infos">
+    <p><span>Title: </span>{{movieDescription.title}}</p>
+    <p>{{movieDescription.aka}}</p>
+    <p>{{movieDescription.actors}}</p>
+    <p>{{movieDescription.imdbId}}</p>
+    <p>{{movieDescription.imdbIv}}</p>
+    <p>{{movieDescription.imdbUrl}}</p>
+    <p>{{movieDescription.rank}}</p>
+    <p>{{movieDescription.year}}</p>
+  </div>
+</div>
