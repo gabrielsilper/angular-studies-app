@@ -3,12 +3,13 @@
   max-height: 250px;
   padding: 10px;
   display: flex;
-  gap: 20px;
+  gap: 5px;
 }
 
 .poster-infos {
   height: 200px;
   color: #c0bbbb;
+  padding: 15px;
 }
 
 .poster-infos span {

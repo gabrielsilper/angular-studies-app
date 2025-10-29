@@ -1,0 +1,31 @@
+.search-movie-container {
+  border: 2px solid blueviolet;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-movie-form {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.search-movie-button {
+  width: 15em;
+  height: 3vh;
+  background-color: #a45d21;
+  border: none;
+  color: #ebe9e9;
+  font-weight: 900;
+  border-radius: 7px;
+}
+
+.search-movie-input {
+  width: 30em;
+  background-color: #1d1e1f;
+  border: 1px solid #ebe9e9;
+  border-radius: 12px;
+  color: #c0bbbb;
+  padding: 10px;
+}

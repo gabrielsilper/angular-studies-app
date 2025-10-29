@@ -5,10 +5,11 @@ import { MovieDescription } from './models/MovieDescription';
 import { FormsModule } from '@angular/forms';
 import { Loading } from "./loading/loading";
 import { MoviesSection } from './movies-section/movies-section';
+import { SearchMovieForm } from "./search-movie-form/search-movie-form";
 
 @Component({
   selector: 'app-movie',
-  imports: [FormsModule, Loading, MoviesSection],
+  imports: [FormsModule, Loading, MoviesSection, SearchMovieForm],
   templateUrl: './movie.html',
   styleUrl: './movie.css',
 })
