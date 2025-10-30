@@ -1,20 +1,21 @@
 <div class="create-user-container">
-  <form action="">
+  <form [formGroup]="userForm" (ngSubmit)="$event.preventDefault(); submitForm()">
     <label>
       Name:
-      <input type="text" />
+      <input type="text" formControlName="nameField" />
     </label>
     <label
       >Email:
-      <input type="email" />
+      <input type="email" formControlName="emailField" />
     </label>
     <label
       >Password:
-      <input type="password" />
+      <input type="password" formControlName="passwordField" />
     </label>
     <label
       >Address:
-      <input type="text" />
+      <input type="text" formControlName="addressField" />
     </label>
+    <button type="submit">Register</button>
   </form>
 </div>
