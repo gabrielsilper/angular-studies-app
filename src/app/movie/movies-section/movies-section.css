@@ -1,5 +1,4 @@
 .movies-section {
-    border: 2px red solid;
     display: flex;
     flex-direction: column;
     gap: 1px;

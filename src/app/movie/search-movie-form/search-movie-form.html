@@ -1,6 +1,8 @@
 <div class="search-movie-container">
   <form class="search-movie-form">
-    <input type="text" class="search-movie-input"/>
-    <button type="submit" (click)="$event.preventDefault()" class="search-movie-button">Search</button>
+    <input type="text" class="search-movie-input" name="search-movie-text" [(ngModel)]="searchTextMovie" />
+    <button type="submit" (click)="$event.preventDefault(); searchMovie()" class="search-movie-button">
+      Search
+    </button>
   </form>
 </div>

@@ -1,5 +1,4 @@
 .search-movie-container {
-  border: 2px solid blueviolet;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -13,7 +12,7 @@
 
 .search-movie-button {
   width: 15em;
-  height: 3vh;
+  height: 30px;
   background-color: #a45d21;
   border: none;
   color: #ebe9e9;
