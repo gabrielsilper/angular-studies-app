@@ -9,10 +9,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class CreateUserForm {
   userForm = new FormGroup({
-    nameField: new FormControl(''),
-    emailField: new FormControl(''),
-    passwordField: new FormControl(''),
-    addressField: new FormControl(''),
+    nameField: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    emailField: new FormControl('', [Validators.required, Validators.email]),
+    passwordField: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    addressField: new FormControl('', Validators.required),
   });
 
   submitForm() {
