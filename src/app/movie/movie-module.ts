@@ -4,7 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  providers:[provideHttpClient()],
+  providers:[],
   imports: [Movie],
   exports: [Movie],
 })
