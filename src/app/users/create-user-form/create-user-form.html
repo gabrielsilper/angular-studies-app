@@ -2,19 +2,43 @@
   <form [formGroup]="userForm" (ngSubmit)="$event.preventDefault(); submitForm()">
     <label>
       Name:
-      <input type="text" formControlName="nameField" />
+      <input type="text" formControlName="nameField" [class.error]="hasError('nameField')" />
+      @if (hasError('nameField')) {
+      <span class="error-message">
+        {{ getErrorMessage('nameField') }}
+      </span>
+      }
     </label>
-    <label
-      >Email:
-      <input type="email" formControlName="emailField" />
+    <label>
+      Email:
+      <input type="email" formControlName="emailField" [class.error]="hasError('emailField')" />
+      @if (hasError('emailField')) {
+      <span class="error-message">
+        {{ getErrorMessage('emailField') }}
+      </span>
+      }
     </label>
-    <label
-      >Password:
-      <input type="password" formControlName="passwordField" />
+    <label>
+      Password:
+      <input
+        type="password"
+        formControlName="passwordField"
+        [class.error]="hasError('passwordField')"
+      />
+      @if (hasError('passwordField')) {
+      <span class="error-message">
+        {{ getErrorMessage('passwordField') }}
+      </span>
+      }
     </label>
-    <label
-      >Address:
-      <input type="text" formControlName="addressField" />
+    <label>
+      Address:
+      <input type="text" formControlName="addressField" [class.error]="hasError('addressField')" />
+      @if (hasError('addressField')) {
+      <span class="error-message">
+        {{ getErrorMessage('addressField') }}
+      </span>
+      }
     </label>
     <button type="submit">Register</button>
   </form>
