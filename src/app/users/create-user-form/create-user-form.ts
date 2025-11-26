@@ -11,7 +11,7 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validatio
 export class CreateUserForm {
   userForm = new FormGroup({
     nameField: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    emailField: new FormControl('', [Validators.required, this.emailValidator()]),
+    emailField: new FormControl('', this.emailValidator()),
     passwordField: new FormControl('', [Validators.required, Validators.minLength(8)]),
     addressField: new FormControl('', Validators.required),
   });
@@ -19,7 +19,7 @@ export class CreateUserForm {
   emailValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!control.value) {
-        return null; // Let required validator handle empty values
+        return { required: { value: control.value }};
       }
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       const valid = emailRegex.test(control.value);
@@ -76,7 +76,6 @@ export class CreateUserForm {
     if (this.userForm.valid) {
       console.log(this.userForm.value);
     } else {
-      // Mark all fields as touched to show errors
       Object.keys(this.userForm.controls).forEach(key => {
         this.userForm.get(key)?.markAsTouched();
       });
