@@ -4,7 +4,7 @@ import { MovieResponse } from '../models/MovieResponse';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: 'root',
 })
 export class MovieService {
   private baseUrl = 'https://imdb.iamidiotareyoutoo.com/';

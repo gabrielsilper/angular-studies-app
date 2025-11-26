@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MovieService } from './services/movie-service';
 import { MovieResponse } from './models/MovieResponse';
 import { MovieDescription } from './models/MovieDescription';
@@ -14,14 +15,15 @@ import { MovieEventService } from './services/movie-event-service';
   templateUrl: './movie.html',
   styleUrl: './movie.css',
 })
-export class Movie implements OnInit {
+export class Movie implements OnInit, OnDestroy {
   isLoading = true;
   searchText: string = '';
 
   descriptions!: MovieDescription[];
+  private subscription?: Subscription;
 
   constructor(private movieService: MovieService, private movieEvent: MovieEventService) {
-    this.movieEvent.listen('search-movie', (event) => {
+    this.subscription = this.movieEvent.listen('search-movie', (event) => {
       this.searchMovie(event)
     });
   }
@@ -33,6 +35,10 @@ export class Movie implements OnInit {
         this.descriptions = movieResponse.description;
         this.isLoading = false;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   searchMovie(movie: string) {

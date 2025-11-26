@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { WishItem } from './models/WishItem';
 import { AddWishForm } from './add-wish-form/add-wish-form';
 import { WishList } from './wish-list/wish-list';
@@ -11,18 +12,23 @@ import { WishEventService } from './services/WishEventService';
   templateUrl: './wish.html',
   styleUrl: './wish.css',
 })
-export class Wish {
+export class Wish implements OnDestroy {
   wishes: WishItem[] = [
     new WishItem('Learn Angular'),
     new WishItem('Learn Java', true),
     new WishItem('Learn DevOps'),
   ];
 
+  filter: any;
+  private subscription: Subscription;
+
   constructor(private wishEvent: WishEventService) {
-    this.wishEvent.listen('remove-wish', (wishOfEvent) => {
+    this.subscription = this.wishEvent.listen('remove-wish', (wishOfEvent) => {
       this.wishes = this.wishes.filter((wish) => wish !== wishOfEvent);
     });
   }
 
-  filter: any;
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

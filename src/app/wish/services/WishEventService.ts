@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { WishItem } from '../models/WishItem';
 import { Injectable } from '@angular/core';
 
@@ -17,8 +17,8 @@ export class WishEventService {
     this.subject.next(data);
   }
 
-  listen(eventName: string, callback: (event: WishItem) => void) {
-    this.subject.asObservable().subscribe((data: WishEventData) => {
+  listen(eventName: string, callback: (event: WishItem) => void) : Subscription {
+    return this.subject.asObservable().subscribe((data: WishEventData) => {
       if (data.eventName === eventName) {
         callback(data.payload);
       }
